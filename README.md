@@ -1,7 +1,7 @@
 # AdventOfCode2017
 My solutions to adventofcode.com/2017
 
-Will mostly be done in Python as i want to learn it better, but some in Matlab, as I have just learned it in scool.
+Will mostly be done in Python as I want to learn it better, but some in Matlab, as I have just learned it in scool.
 
 | Day             | Language |
 |-----------------|----------|
