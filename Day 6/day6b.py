@@ -20,4 +20,4 @@ while not seenBefore:
 		seenBefore = True;
 	puzzle = p
 
-print(count)
+print(len(previous))
