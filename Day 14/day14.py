@@ -48,19 +48,42 @@ def knotHash(puzzleInput):
 	return ''.join(s)
 
 
-base = 'amgozmfv'
-# base = 'flqrgnkx'
+
+base = 'amgozmfv'	# actual puzzle input
+# base = 'flqrgnkx' 	# example
 grid = [knotHash(base + '-' + str(i)) for i in range(128)]
 
-# print(grid[0])
 
-binary = [bin(int(hexa, 16))[2:] for hexa in grid]
-
-used = 0
-for row in binary:
-	used += sum(row[i] == '1' for i in range(len(row)))
+# .zfill(128) makes sure every binary number has a length of 128
+binary = [bin(int(hexa, 16))[2:].zfill(128) for hexa in grid]
 
 
+# part a
+used = sum(row.count('1') for row in binary)
 print(used)
 
+
+# part b
+def checkPosition(row, col, mark):
+	# check if out of bounds
+	if row < 0 or col < 0 or row > 127 or col > 127: return False
+	if binary[row][col] != '1': return False
+	# binary[row][col] = '' + mark
+	binary[row] = binary[row][:col] + mark + binary[row][col+1:]
+	checkPosition(row  , col+1, mark)
+	checkPosition(row  , col-1, mark)
+	checkPosition(row+1, col  , mark)
+	checkPosition(row-1, col  , mark)
+	return True
+
+regions = 0
+seen = '.'
+for i in range(128):
+	for j in range(128):
+		if checkPosition(i, j, seen):
+			regions += 1
+
+
+
+print(regions)
 
