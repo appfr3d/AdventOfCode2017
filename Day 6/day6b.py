@@ -20,4 +20,5 @@ while not seenBefore:
 		seenBefore = True;
 	puzzle = p
 
+
 print(len(previous))

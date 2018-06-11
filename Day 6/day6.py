@@ -17,7 +17,14 @@ while not seenBefore:
 	if p not in previous:
 		previous.append(deepcopy(p))
 	else:
-		seenBefore = True;
+		seenBefore = True
+		previous.append(deepcopy(p))
 	puzzle = p
 
+# Part a
 print(count)
+
+
+# Part b
+loopSize = len(previous) - previous.index(previous[-1]) - 1
+print(loopSize)
