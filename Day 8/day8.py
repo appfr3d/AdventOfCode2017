@@ -14,7 +14,7 @@ operator = {
 }
 
 registers = {}
-maxValue = 0
+maxVal = 0
 
 # loop through each line in puzzle input
 for line in puzzle:
@@ -33,10 +33,14 @@ for line in puzzle:
 	if operator[parts[5]](registers[parts[4]], int(parts[6])):
 
 		# update set if needed
-		registers[parts[0]] = operator[parts[1]](registers[parts[0]], int(parts[2]))
+		val = operator[parts[1]](registers[parts[0]], int(parts[2]))
+		registers[parts[0]] = val
+		if val > maxVal:
+			maxVal = val
 
 
 print(max(registers.values()))
+print(maxVal)
 
 
 
